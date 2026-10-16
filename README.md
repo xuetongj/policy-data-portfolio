@@ -8,8 +8,6 @@ Static recruiting portfolio.
 - `projects/philadelphia-census/`: descriptive project page with city estimates sample.
 - `projects/county-data-analysis/`: readable HTML report and figures.
 
-The HUD Housing Counseling Search is available as a live web application. Its Python backend is hosted on Render, and the portfolio includes direct links to the deployed demo.
-
 
 ## Live HUD Search
 HUD Housing Counseling Search is hosted at https://hud-housing-counseling-demo.onrender.com/; homepage and case study link to this demonstration.
