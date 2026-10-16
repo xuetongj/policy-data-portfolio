@@ -1,0 +1,68 @@
+INSTRUCTOR DATASET AND DASHBOARD PLAN
+
+Dataset: awards.json
+One record per announced recipient/project. Metadata holds shared source and
+interpretation details. This is an instructor reference, not a required student
+schema. Students should still choose their own fields and analytical questions.
+
+FIELD DEFINITIONS
+award_id: Locally assigned stable identifier, not an EPA grant number.
+recipient: Named organization, with location separated into city/state.
+city: Recipient location; Denver inferred from the organization name.
+state: Two-letter state abbreviation; not necessarily the entire service area.
+amount_usd: Numeric whole dollars announced for the project, not expenditures.
+hazards: Array of normalized hazards explicitly mentioned in each description.
+cybersecurity_explicit: Boolean indicating explicit cybersecurity language.
+natural_hazard_explicit: Boolean indicating natural hazards or extreme weather.
+purpose: Brief paraphrase of funded activities. SCADA means Supervisory Control
+and Data Acquisition; PLC means Programmable Logic Controller.
+
+INTERPRETATION
+SCADA upgrades alone do not establish an explicit cybersecurity purpose:
+Bloomington is not flagged for cybersecurity. Anderson's cameras likewise do
+not establish cybersecurity. Denver's flood-risk reduction counts as an explicit
+flood reference. General natural-hazard language does not imply every specific
+hazard. False flags mean not explicitly mentioned, not absence of real risk.
+Projects can address multiple hazards. Funding associated with a hazard means
+the full project amount, not a source-reported allocation to that hazard.
+Do not sum overlapping hazard funding totals into an overall total.
+EPA describes grants as anticipated, subject to requirements; do not label these
+as disbursed funds or completed projects.
+
+RECOMMENDED DASHBOARD
+Use index.html with ordinary JavaScript and CSS, plus awards.json as the sole
+editable data source. No database or external chart service is needed for ten
+records. Keep data separate from HTML; do not embed a second copy in the page.
+
+Serve the folder over localhost. Browser code should use:
+  const response = await fetch('./awards.json', { cache: 'no-store' });
+  if (!response.ok) throw new Error('Dataset could not be loaded');
+  const { metadata, awards } = await response.json();
+Validate unique IDs, numeric nonnegative amounts, required text, Boolean flags,
+and hazard arrays before rendering. Display a clear error if loading fails.
+Opening index.html directly with file:// can prevent fetch from reading JSON.
+A Python standard-library local server is sufficient if Python is installed;
+a one-click launcher can be added when the dashboard is built.
+
+Re-read the file on page load and on a Reload data button. Saving the JSON and
+reloading then updates all calculated metrics, charts, filter options and rows.
+This is refresh-based, not live push. A database/API becomes worthwhile only
+if users need shared editing, persistence from the UI, or a larger live feed.
+
+Suggested layout:
+1. Title and anticipated-award status.
+2. Metrics: recipient count, total announced dollars, average and largest award.
+3. Sorted horizontal bars comparing award dollars by recipient.
+4. State and hazard filters plus an accessible project-detail table.
+5. Optional state totals; avoid a map until project geography is justified.
+All metrics and views should use the same filtered records. Clearly label when
+filters are active and provide Reset filters. Calculate values from records,
+never from handwritten totals. The source URL can remain in this instructor
+dataset; it is not being added to the student folders or lab handout.
+
+CONNECTION CHECK WHEN IMPLEMENTED
+Record the unfiltered total. Temporarily increase one amount by 1, save, and
+reload data. Verify the total increases by 1 and that recipient's bar/table
+changes. Restore the original amount and verify the original total returns.
+Also verify a filter, reset, and a readable missing-file error in the browser.
+Dashboard implemented as index.html. Verified in Chrome: initial totals, hazard filter, reset, and a saved $1 amount change appearing on Reload data; original amount restored. Open http://127.0.0.1:8030 while the local server is running. To restart from this folder: python -m http.server 8030 --bind 127.0.0.1

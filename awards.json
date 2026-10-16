@@ -1,0 +1,26 @@
+{
+  "metadata": {
+    "source_url": "https://www.epa.gov/newsreleases/epa-announces-1175-million-help-protect-drinking-water-cyberattacks-and-extreme",
+    "published_date": "2026-08-31",
+    "accessed_date": "2026-09-30",
+    "unit_of_observation": "One announced recipient/project",
+    "currency": "USD",
+    "announced_total_usd": 11750000,
+    "award_status": "Anticipated; legal and administrative requirements pending",
+    "classification_rule": "Hazard flags indicate explicit mention in the recipient description, not an independent risk assessment. False means not explicitly mentioned. Natural hazards includes specific natural hazards and general natural-hazard/extreme-weather language.",
+    "location_rule": "City and state reflect recipient locations, not project coordinates or service-area boundaries. Denver is inferred from the recipient name.",
+    "purpose_rule": "Purpose is a concise paraphrase of proposed work; hazard labels are normalized."
+  },
+  "awards": [
+    {"award_id":"EPA-01","recipient":"City of Lake City","city":"Lake City","state":"FL","amount_usd":189875,"hazards":["cybersecurity"],"cybersecurity_explicit":true,"natural_hazard_explicit":false,"purpose":"SCADA and pump controls"},
+    {"award_id":"EPA-02","recipient":"City of Orange City","city":"Orange City","state":"FL","amount_usd":1068750,"hazards":["hurricane"],"cybersecurity_explicit":false,"natural_hazard_explicit":true,"purpose":"Stormwater and generators"},
+    {"award_id":"EPA-03","recipient":"City of Bloomington","city":"Bloomington","state":"IN","amount_usd":2375000,"hazards":["natural hazards unspecified","extreme weather unspecified"],"cybersecurity_explicit":false,"natural_hazard_explicit":true,"purpose":"Facilities, generators, SCADA"},
+    {"award_id":"EPA-04","recipient":"City of Bay City","city":"Bay City","state":"TX","amount_usd":1110105,"hazards":["hurricane","extreme events unspecified"],"cybersecurity_explicit":false,"natural_hazard_explicit":true,"purpose":"New well facility"},
+    {"award_id":"EPA-05","recipient":"City of Coffeyville","city":"Coffeyville","state":"KS","amount_usd":687240,"hazards":["extreme weather unspecified"],"cybersecurity_explicit":false,"natural_hazard_explicit":true,"purpose":"Treatment repairs; standby generator"},
+    {"award_id":"EPA-06","recipient":"Denver Water","city":"Denver","state":"CO","amount_usd":1125000,"hazards":["wildfire","extreme weather unspecified","flood"],"cybersecurity_explicit":false,"natural_hazard_explicit":true,"purpose":"Dam improvements"},
+    {"award_id":"EPA-07","recipient":"City of San Diego","city":"San Diego","state":"CA","amount_usd":2375000,"hazards":["natural hazards unspecified","cybersecurity"],"cybersecurity_explicit":true,"natural_hazard_explicit":true,"purpose":"PLC replacement"},
+    {"award_id":"EPA-08","recipient":"City of Anderson","city":"Anderson","state":"CA","amount_usd":804530,"hazards":["drought","wildfire"],"cybersecurity_explicit":false,"natural_hazard_explicit":true,"purpose":"Tank replacement; monitoring; cameras"},
+    {"award_id":"EPA-09","recipient":"City of Hemet","city":"Hemet","state":"CA","amount_usd":1150000,"hazards":["wildfire","extreme heat"],"cybersecurity_explicit":false,"natural_hazard_explicit":true,"purpose":"Tank and transmission upgrades"},
+    {"award_id":"EPA-10","recipient":"California-American Water Company","city":"Sacramento","state":"CA","amount_usd":864500,"hazards":["wildfire"],"cybersecurity_explicit":false,"natural_hazard_explicit":true,"purpose":"System upgrades; emergency generator"}
+  ]
+}
