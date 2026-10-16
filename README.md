@@ -1,6 +1,6 @@
 # Selected Projects — Public Data & Policy Analysis
 
-Static recruiting portfolio. Publish the contents of this folder at the repository root with GitHub Pages (Deploy from a branch → main → /root).
+Static recruiting portfolio. 
 
 - `index.html`: portfolio homepage.
 - `projects/epa-awards-dashboard/`: interactive static dashboard using local `awards.json`.
