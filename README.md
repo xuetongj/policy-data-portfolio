@@ -9,3 +9,7 @@ Static recruiting portfolio. Publish the contents of this folder at the reposito
 - `projects/county-data-analysis/`: readable HTML report and figures.
 
 Do not claim the HUD search is live. Check published links and the EPA filter controls after deployment.
+
+
+## Live HUD Search
+HUD Housing Counseling Search is hosted at https://hud-housing-counseling-demo.onrender.com/; homepage and case study link to this demonstration.
