@@ -1,0 +1,152 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Selected work in public data and policy analysis"><title>County Housing &amp; Demographic Analysis | Xuetong Jiao</title><link rel="stylesheet" href="../../assets/style.css"></head><body><div class="shell"><nav class="nav"><a class="brand" href="../../index.html">Xuetong Jiao · Selected Projects</a><a href="../../index.html">All projects →</a></nav></div><main class="shell"><article class="content"><div class="tag">04 · Quantitative policy analysis</div><div class="statgrid"><div class="stat"><strong>126</strong>counties included</div><div class="stat"><strong>0.044</strong>housing score × poverty (r)</div><div class="stat"><strong>−0.384</strong>housing score × non-White share (r)</div></div><p class="note">These figures summarize correlations in the provided data; they do not establish causal effects. Key metadata for the housing score and racial composition data were not provided.</p><h1>Housing Performance Poverty and Race Analysis</h1>
+<p>County-level descriptive analysis | October 2026</p>
+<h2>Main conclusion</h2>
+<p>Across the 126 counties with a housing performance score, housing performance had almost no linear relationship with the 2016 poverty percentage (Pearson r = 0.044). It had a modest negative relationship with the percentage of non-White residents (r = -0.384). These are county-level associations, not evidence that poverty or racial composition causes a housing score or that the results describe particular people or organizations.</p>
+<h2>Initial notes and questions</h2>
+<ul>
+<li><code>Housing_Performance.csv</code> has one row per county code and a <code>MeanPHAS</code> housing performance value. Question: What exactly does the score measure, what is its scale, and what reporting period does it represent?</li>
+<li><code>Poverty.csv</code> contains county identifiers, geography, population in poverty, a 2016 poverty percentage, and household income. Question: Is the 2016 measure comparable in timing and definition to the housing score?</li>
+<li><code>Race.csv</code> contains county identifiers, geography, White percentage, non-White percentage, and county population. Question: What year and definition does the race file use, and how were categories constructed?</li>
+<li>The files share county codes such as <code>DE001</code>, suggesting county code is a possible join key. Question: Are county codes unique and complete in every file, and how many housing counties match both source files?</li>
+</ul>
+<p>Before calculating, I expected poverty might have a negative relationship with housing performance because higher poverty could make housing challenges more difficult to address. I did not have a strong expectation about racial composition because the files do not identify the mechanisms connecting demographics to performance. These were expectations, not observations.</p>
+<h2>Decision log</h2>
+<table>
+<thead>
+<tr>
+  <th>What I noticed or needed to understand</th>
+  <th>What I asked AI</th>
+  <th>What I learned or decided</th>
+  <th>How I checked it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>The files share county-code fields but use different column names.</td>
+  <td>Can the county code uniquely connect the files?</td>
+  <td>Use the county code after trimming and case-normalizing; verify uniqueness before merging.</td>
+  <td>The audit reports 126, 282, and 282 unique nonblank keys.</td>
+</tr>
+<tr>
+  <td>The housing score has no supplied scale or period.</td>
+  <td>What can be claimed about the score?</td>
+  <td>Treat it as an observed score and avoid inventing a definition or time comparison.</td>
+  <td>Checked the source headings and README limitations.</td>
+</tr>
+<tr>
+  <td>I needed repeatable calculations and inspectable outputs.</td>
+  <td>Should this run in Python or a spreadsheet?</td>
+  <td>Use the supplied standard-library Python script because it is reproducible, saves CSV outputs, and can be rerun from the folder.</td>
+  <td>Ran <code>py analyze_data.py</code> and read the generated outputs.</td>
+</tr>
+<tr>
+  <td>The existing script did not make the required plots.</td>
+  <td>How should the relationships be shown?</td>
+  <td>Add two labeled scatterplots using the combined analysis data.</td>
+  <td>Checked labels, axes, and point counts in the saved images.</td>
+</tr>
+</tbody>
+</table>
+<h2>Analysis tool and preparation</h2>
+<p>I used Python. The script reads the three untouched source files, validates nonblank unique county keys, uses <code>Housing_Performance.csv</code> as the base, and left-joins poverty and race records by county code. This keeps every county with an observed housing score. It writes <code>combined_analysis.csv</code>, <code>summary_statistics.csv</code>, <code>pairwise_correlations.csv</code>, and <code>merge_audit.txt</code>. The run can be repeated with <code>py analyze_data.py</code> from this folder.</p>
+<p>The merge retained 126 of 126 housing counties in both source files, producing 126 combined rows. Poverty and race each contain 156 counties without a housing score, so those records were not part of this analysis. Several combined records were spot-checked against the original rows through the county-code fields. The key fields were unique in all three inputs, which supports the one-row-per-housing-county merge. The race file does not state its reporting year, and the housing file does not define the score scale or reporting period.</p>
+<h2>Summary statistics</h2>
+<table>
+<thead>
+<tr>
+  <th>Measure</th>
+  <th style="text-align:right">Usable n</th>
+  <th style="text-align:right">Mean</th>
+  <th style="text-align:right">Median</th>
+  <th style="text-align:right">Sample SD</th>
+  <th style="text-align:right">Minimum</th>
+  <th style="text-align:right">Maximum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>MeanPHAS housing score</td>
+  <td style="text-align:right">126</td>
+  <td style="text-align:right">83.804</td>
+  <td style="text-align:right">87.145</td>
+  <td style="text-align:right">11.506</td>
+  <td style="text-align:right">29.17</td>
+  <td style="text-align:right">99.00</td>
+</tr>
+<tr>
+  <td>Poverty percentage (2016)</td>
+  <td style="text-align:right">126</td>
+  <td style="text-align:right">14.992%</td>
+  <td style="text-align:right">15.00%</td>
+  <td style="text-align:right">5.131</td>
+  <td style="text-align:right">5.00%</td>
+  <td style="text-align:right">30.00%</td>
+</tr>
+<tr>
+  <td>Non-White residents percentage</td>
+  <td style="text-align:right">126</td>
+  <td style="text-align:right">16.833%</td>
+  <td style="text-align:right">8.85%</td>
+  <td style="text-align:right">18.383</td>
+  <td style="text-align:right">1.70%</td>
+  <td style="text-align:right">83.10%</td>
+</tr>
+</tbody>
+</table>
+<p>The mean and median show the center of the observed county values; the standard deviation describes spread around the mean. Percentages are percentage points, not proportions. These statistics summarize the supplied columns; they do not resolve the missing reporting year or score definition.</p>
+<h2>Correlation analysis</h2>
+<table>
+<thead>
+<tr>
+  <th>Measure pair</th>
+  <th style="text-align:right">Pairwise n</th>
+  <th style="text-align:right">Pearson r</th>
+  <th>Plain-language reading</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Housing score and poverty percentage</td>
+  <td style="text-align:right">126</td>
+  <td style="text-align:right">0.044</td>
+  <td>Essentially no linear association in this dataset.</td>
+</tr>
+<tr>
+  <td>Housing score and non-White residents percentage</td>
+  <td style="text-align:right">126</td>
+  <td style="text-align:right">-0.384</td>
+  <td>A modest negative linear association: higher non-White percentage tended to coincide with lower scores, but the pattern is not a complete or causal explanation.</td>
+</tr>
+<tr>
+  <td>Poverty percentage and non-White residents percentage</td>
+  <td style="text-align:right">126</td>
+  <td style="text-align:right">0.114</td>
+  <td>A small positive linear association.</td>
+</tr>
+</tbody>
+</table>
+<p>Correlation ranges from -1 to 1. Values near 0 indicate little linear pattern; negative values indicate that one measure tends to be lower as the other is higher; positive values indicate that they tend to rise together. Correlation does not establish causation.</p>
+<h3>Plots</h3>
+<p><img src="housing_vs_poverty.svg" alt="Housing performance score versus poverty percentage" /></p>
+<p><em>Figure 1. Each point represents one of the 126 counties in the combined analysis dataset.</em></p>
+<p><img src="housing_vs_nonwhite.svg" alt="Housing performance score versus non-White residents percentage" /></p>
+<p><em>Figure 2. Each point represents one of the 126 counties in the combined analysis dataset.</em></p>
+<p>The first plot is consistent with the near-zero correlation: the points do not form a strong upward or downward line. The second plot shows more of a downward tendency, consistent with r = -0.384, but the points remain widely scattered. No plot alone explains why a county has a particular score.</p>
+<h2>Explanation for a public-sector leader</h2>
+<p>I analyzed 126 counties that had a housing performance score and successfully matched records for those counties to a 2016 poverty percentage and a percentage of non-White residents. The results describe associations among county-level measures in the supplied files. They do not describe individual residents, particular housing organizations, or current conditions unless the files establish those connections.</p>
+<p>The main finding is that the housing score and poverty percentage were almost unrelated in a simple linear comparison. The correlation was 0.044, which is very close to zero, and the scatterplot shows no clear straight-line pattern. The housing score and non-White residents percentage had a modest negative correlation of -0.384. In ordinary language, counties with larger non-White percentages tended to have lower housing scores in this dataset, but the points were still dispersed and the relationship was not strong enough to serve as an explanation by itself. Poverty and non-White percentage had only a small positive correlation of 0.114.</p>
+<p>These results support describing patterns in the 126 matched counties. They do not support a claim that poverty or racial composition causes housing performance, that a demographic characteristic determines an organization’s performance, or that an association applies to people within a county. The housing score’s scale and reporting period are not defined in the supplied file, and the race file does not state its year. The analysis also does not control for other factors such as housing stock, funding, rurality, administrative capacity, local labor markets, or measurement differences. The correlations are descriptive and may be affected by omitted variables or by the way the measures were constructed.</p>
+<p>Before recommending policy or management action, I would need the score definition and time period, the race data’s reporting year and category definitions, current comparable data, information about program design and funding, and additional explanatory variables. I would also want subgroup and sensitivity checks, consultation with affected communities, and a plan for monitoring whether any intervention improves outcomes without creating unintended effects.</p>
+<h2>Process reflection</h2>
+<p>One question that helped me move forward was whether the county codes were unique and complete; it turned a possible merge assumption into a checkable decision. I chose to keep the housing file as the merge base after inspecting the audit because the task centers on counties with observed housing scores. I would ask earlier what each source’s reporting period and measure definition were, because those limits shape how confidently the results can be compared.</p>
+<h2>Files used and reproducibility</h2>
+<ul>
+<li><code>analyze_data.py</code> — repeatable merge, summary statistics, and correlation calculations.</li>
+<li><code>combined_analysis.csv</code> — 126-row merged analysis dataset.</li>
+<li><code>summary_statistics.csv</code> — selected-measure summaries.</li>
+<li><code>pairwise_correlations.csv</code> — Pearson correlations and pairwise counts.</li>
+<li><code>merge_audit.txt</code> — merge coverage and limitations.</li>
+<li><code>housing_vs_poverty.svg</code> and <code>housing_vs_nonwhite.svg</code> — scatterplots included above.</li>
+</ul>
+<p>Run <code>py analyze_data.py</code> in this folder to regenerate the CSV analysis outputs. Run <code>py make_report.py</code> to regenerate the plots and this Markdown report.</p>
+</article></main><footer><div class="shell">Xuetong Jiao · Selected projects in public data and policy analysis</div></footer></body></html>

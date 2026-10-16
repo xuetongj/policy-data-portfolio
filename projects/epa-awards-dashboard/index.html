@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drinking Water Resilience | Award Dashboard</title>
+<style>
+:root{--navy:#163653;--blue:#21649a;--red:#b33942;--ink:#203448;--muted:#566878;--line:#dce3e9;--pale:#f4f7fa}*{box-sizing:border-box}body{margin:0;background:#fff;color:var(--ink);font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}.top{border-top:6px solid var(--red);border-bottom:1px solid var(--line)}.top-inner{max-width:1240px;margin:auto;padding:17px 28px;display:flex;justify-content:space-between;gap:16px;align-items:center}.brand{font-weight:750;color:var(--navy);letter-spacing:.035em}.tag{font-size:12px;color:var(--muted)}main{max-width:1240px;margin:auto;padding:38px 28px}h1{font-size:clamp(30px,4vw,44px);letter-spacing:-.035em;line-height:1.15;margin:8px 0 15px;color:var(--navy)}h2{font-size:20px;line-height:1.3;margin:0 0 5px}.eyebrow{font-size:12px;font-weight:750;letter-spacing:.14em;color:var(--blue);text-transform:uppercase}.intro{max-width:760px;color:var(--muted);margin:0 0 20px}.notice{border-left:4px solid var(--red);background:#faf5f5;padding:12px 16px;font-size:13px;margin:22px 0}.controls{display:flex;align-items:end;gap:14px;flex-wrap:wrap;padding:20px 0;border-bottom:1px solid var(--line)}label{display:grid;gap:6px;font-weight:650;font-size:13px}select,button{font:inherit;border:1px solid #9aaaba;border-radius:4px;min-height:42px;padding:9px 12px;background:white;color:var(--navy)}select{min-width:170px;max-width:100%}button{cursor:pointer;font-weight:650}button:hover{background:var(--pale)}button.primary{background:var(--navy);color:white;border-color:var(--navy)}button:disabled{opacity:.6;cursor:wait}:focus-visible{outline:3px solid #c9474f;outline-offset:3px}.reload{margin-left:auto}.status{font-size:12px;color:var(--muted);margin:12px 0 22px}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:26px}.metric{border:1px solid var(--line);border-top:3px solid var(--blue);padding:21px 20px;border-radius:4px}.metric:first-child{border-top-color:var(--red)}.metric-label{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}.value{font-size:clamp(23px,2.7vw,34px);font-weight:750;color:var(--navy);margin:7px 0;letter-spacing:-.025em}.metric small{color:var(--muted)}.panel{border:1px solid var(--line);border-radius:5px;padding:25px;margin-bottom:26px}.sub{font-size:13px;color:var(--muted);margin:0 0 24px}.bar-row{display:grid;grid-template-columns:240px minmax(40px,1fr) 105px;gap:16px;align-items:center;margin:16px 0;font-size:13px}.bar-label{font-weight:600}.bar-label small{display:block;font-weight:400;color:var(--muted)}.track{height:18px;background:var(--pale);border-radius:2px;overflow:hidden}.fill{height:100%;background:var(--blue);border-radius:2px}.bar-row:first-child .fill{background:var(--navy)}.amount{text-align:right;font-variant-numeric:tabular-nums;font-weight:650}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:13px;text-align:left}th{background:var(--pale);font-size:11px;text-transform:uppercase;letter-spacing:.04em;padding:13px 12px;white-space:nowrap}td{padding:16px 12px;border-bottom:1px solid var(--line);vertical-align:top}td:first-child{font-weight:650;min-width:170px}td:last-child{min-width:170px}.chip{display:inline-block;border:1px solid #d5e3ef;border-radius:3px;background:#f3f7fb;color:#285573;font-size:11px;padding:2px 6px;margin:0 4px 4px 0}.foot{display:grid;grid-template-columns:1fr 1fr;gap:30px;color:var(--muted);font-size:12px;padding:0 2px 24px}.foot strong{display:block;color:var(--ink);margin-bottom:5px}a{color:var(--blue)}.error{background:#fff1f1;border:1px solid var(--red);padding:16px;margin:20px 0}.empty{padding:28px;color:var(--muted);text-align:center}[hidden]{display:none!important}footer{border-top:1px solid var(--line);padding-top:18px;font-size:12px;color:var(--muted)}@media(max-width:800px){.metrics{grid-template-columns:repeat(2,1fr)}.bar-row{grid-template-columns:170px minmax(25px,1fr) 95px;gap:9px}.top-inner{align-items:start}.tag{max-width:170px;text-align:right}}@media(max-width:540px){main{padding:25px 16px}.top-inner{padding:14px 16px}.brand{font-size:12px}.metric{padding:15px 12px}.panel{padding:18px 12px}.bar-row{grid-template-columns:1fr 95px}.bar-label{grid-column:1 / -1}.track{height:14px}.foot{grid-template-columns:1fr;gap:16px}.reload{margin-left:0}label{width:100%}.value{font-size:24px}}
+.chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}.chart-grid .panel{min-width:0;padding:20px}.chart-svg{display:block;width:100%;height:auto}.chart-svg text{font-family:system-ui,sans-serif;fill:var(--muted);font-size:12px}.chart-svg .chart-value{font-weight:700;fill:var(--navy)}main{padding-top:22px}h1{font-size:32px;margin:5px 0 8px}.intro{margin-bottom:8px;max-width:none}.notice{margin:12px 0;padding:8px 12px}.controls{padding:12px 0}.status{margin:8px 0 14px}.metric{padding:12px 18px}.metrics{margin-bottom:20px}.track{height:25px}.bar-row{margin:12px 0}.chart-note{font-size:12px;color:var(--muted);margin:8px 0 0}@media(max-width:850px){.chart-grid{grid-template-columns:1fr}}
+.chart-bar{cursor:pointer;transition:opacity .15s}.chart-bar:hover{opacity:.75}.chart-bar:focus-visible,.chart-bar[aria-pressed="true"]{stroke:#163653;stroke-width:3;outline:none}</style>
+</head>
+<body><div style="padding:10px 28px;background:#edf5f8;font:14px system-ui,sans-serif"><a href="../../index.html" style="color:#145b7a;text-decoration:none;font-weight:700">← Back to portfolio</a></div>
+<header class="top"><div class="top-inner"><div class="brand">WATER INFRASTRUCTURE / DATA BRIEF</div><div class="tag">Public data demonstration<br>Not an official EPA website</div></div></header>
+<main>
+<div class="eyebrow">Infrastructure resilience &amp; sustainability</div>
+<h1>Protecting drinking water.</h1>
+<p class="intro">Explore announced EPA funding to help drinking water systems respond to cybersecurity threats, natural hazards, and extreme weather.</p>
+<div class="notice"><strong>Anticipated awards.</strong> Legal and administrative requirements must be satisfied before grants are awarded. Amounts represent announced funding, not expenditures.</div>
+<section class="controls" aria-label="Filter awards">
+<label>State<select id="state"><option value="">All states</option></select></label>
+<label>Hazard mentioned<select id="hazard"><option value="">All hazards</option></select></label>
+<button id="reset">Reset filters</button><button id="reload" class="primary reload">Reload data</button>
+</section>
+<p id="status" class="status" role="status" aria-live="polite">Loading dataset…</p>
+<div id="error" class="error" role="alert" hidden></div>
+<div id="content" hidden>
+<section class="metrics" aria-label="Summary of filtered awards">
+<div class="metric"><div class="metric-label">Announced funding</div><div class="value" id="total"></div><small>Selected projects</small></div>
+<div class="metric"><div class="metric-label">Projects</div><div class="value" id="count"></div><small id="states"></small></div>
+<div class="metric"><div class="metric-label">Average award</div><div class="value" id="average"></div><small>Per selected project</small></div>
+<div class="metric"><div class="metric-label">Largest award</div><div class="value" id="largest"></div><small>Within current selection</small></div>
+</section>
+<div class="chart-grid">
+<section class="panel"><h2>Where the funding goes</h2><p class="sub">Total announced funding by state · USD millions</p><div id="state-chart"></div><p class="chart-note">Click a bar to filter by state; click it again to clear.</p></section>
+<section class="panel"><h2>Which hazards are addressed?</h2><p class="sub">Number of selected projects mentioning each hazard</p><div id="hazard-chart"></div><p class="chart-note">Click a bar to filter by hazard. Click again to clear. Counts overlap.</p></section>
+</div>
+<section class="panel"><h2>Funding by recipient</h2><p class="sub">Announced dollars · largest to smallest · bars scaled to the largest selected award</p><div id="bars" aria-label="Recipient funding comparison"></div></section>
+<section class="panel"><h2>Project details</h2><p class="sub">Review the purpose and explicitly mentioned hazards for each selected project.</p><div class="table-wrap"><table><caption class="tag" style="text-align:left;padding-bottom:10px">Amounts in US dollars</caption><thead><tr><th scope="col">Recipient</th><th scope="col">Location</th><th scope="col">Award</th><th scope="col">Hazards mentioned</th><th scope="col">Proposed work</th></tr></thead><tbody id="rows"></tbody></table></div><p id="empty" class="empty" hidden>No projects match these filters. Reset filters to view all awards.</p></section>
+<div class="foot"><div><strong>How to read these data</strong>Projects can address multiple hazards. A hazard filter includes the entire project amount; EPA does not specify how much goes to each hazard. Overlapping categories should not be added together.</div><div><strong>Classification and geography</strong>Hazards reflect explicit source language. SCADA improvements alone are not classified as cybersecurity. Locations identify recipients, not project coordinates or service boundaries.</div></div>
+</div>
+<footer>Source: <a id="source" href="https://www.epa.gov/newsreleases/epa-announces-1175-million-help-protect-drinking-water-cyberattacks-and-extreme" target="_blank" rel="noopener noreferrer">EPA funding announcement</a><span id="published"></span> · Independent data demonstration</footer>
+</main>
+<script>
+'use strict';
+const $ = id => document.getElementById(id);
+const dollars = new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0});
+let awards = [], loadedAt = '';
+const names = {CA:'California',CO:'Colorado',FL:'Florida',IN:'Indiana',KS:'Kansas',TX:'Texas'};
+function el(tag,text,className){const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node;}
+function validate(data){
+ if(!data || !Array.isArray(data.awards) || !data.metadata)throw new Error('Expected metadata and an awards array.');
+ const ids=new Set();
+ for(const a of data.awards){
+  if(!a || ['award_id','recipient','city','state','purpose'].some(k=>typeof a[k]!=='string'||!a[k].trim()) || !Number.isFinite(a.amount_usd)||a.amount_usd<0 || typeof a.cybersecurity_explicit!=='boolean'||typeof a.natural_hazard_explicit!=='boolean'||!Array.isArray(a.hazards)||a.hazards.some(h=>typeof h!=='string'||!h.trim())||ids.has(a.award_id))throw new Error('Invalid or duplicate award record. Check required fields and numeric amounts.');
+  ids.add(a.award_id);
+ }
+}
+function options(id,values,label){const select=$(id),previous=select.value;select.replaceChildren(new Option(label,''));for(const value of values)select.add(new Option(id==='state'?`${names[value]||value} (${value})`:value,value));if(values.includes(previous))select.value=previous;}
+function svgNode(tag,attrs,text){const n=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const [k,v] of Object.entries(attrs||{}))n.setAttribute(k,v);if(text!==undefined)n.textContent=text;return n;}
+function interactiveBar(bar,filter,key,label){
+ bar.classList.add('chart-bar');bar.setAttribute('role','button');bar.setAttribute('tabindex','0');
+ const active=$(filter).value===key;
+ bar.setAttribute('aria-pressed',String(active));bar.setAttribute('aria-label',`${label}. ${active?'Clear':'Filter by'} ${filter}: ${key}`);
+ bar.dataset.filter=filter;bar.dataset.key=key;
+ function activate(){
+  $(filter).value=$(filter).value===key?'':key;render();
+  const replacement=[...document.querySelectorAll('.chart-bar')].find(n=>n.dataset.filter===filter&&n.dataset.key===key);
+  if(replacement)replacement.focus();else $(filter).focus();
+ }
+ bar.addEventListener('click',activate);
+ bar.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();activate();}});
+}
+function charts(selected){
+ const stateTotals=new Map(),hazardCounts=new Map();
+ for(const a of selected){stateTotals.set(a.state,(stateTotals.get(a.state)||0)+a.amount_usd);for(const h of new Set(a.hazards))hazardCounts.set(h,(hazardCounts.get(h)||0)+1);}
+ for(const [id,entries,vertical] of [['state-chart',[...stateTotals].sort((a,b)=>b[1]-a[1]),true],['hazard-chart',[...hazardCounts].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])),false]]){
+  const host=$(id);host.replaceChildren();if(!entries.length){host.append(el('p','No projects match these filters.','empty'));continue;}
+  const svg=svgNode('svg',{viewBox:'0 0 520 320',class:'chart-svg',role:'group','aria-label':entries.map(([k,v])=>`${k}: ${vertical?dollars.format(v):v+' projects'}`).join('; ')});
+  const max=Math.max(...entries.map(e=>e[1]),1);
+  if(vertical){
+   const ceiling=Math.ceil(max/1000000)*1000000,base=278,height=230,left=58,width=450;
+   for(let i=0;i<=4;i++){const y=base-height*i/4;svg.append(svgNode('line',{x1:left,y1:y,x2:508,y2:y,stroke:'#dce3e9'}),svgNode('text',{x:49,y:y+4,'text-anchor':'end'},'$'+(ceiling*i/4/1000000).toFixed(1)+'m'));}
+   const step=width/entries.length;
+   entries.forEach(([key,value],i)=>{const h=value/ceiling*height,x=left+i*step+step*.2,bar=svgNode('rect',{x,y:base-h,width:step*.6,height:h,rx:3,fill:i===0?'#b33942':'#21649a'});bar.append(svgNode('title',{},`${names[key]||key}: ${dollars.format(value)}`));interactiveBar(bar,'state',key,(names[key]||key)+': '+dollars.format(value));svg.append(bar,svgNode('text',{x:left+(i+.5)*step,y:base-h-9,'text-anchor':'middle',class:'chart-value'},'$'+(value/1000000).toFixed(2)+'m'),svgNode('text',{x:left+(i+.5)*step,y:300,'text-anchor':'middle'},key));});
+  }else{
+   const left=202,width=280,top=10,step=280/entries.length;
+   for(let i=0;i<=max;i++){const x=left+i/max*width;svg.append(svgNode('line',{x1:x,y1:top,x2:x,y2:290,stroke:'#e5eaf0'}),svgNode('text',{x,y:310,'text-anchor':'middle'},i));}
+   entries.forEach(([key,value],i)=>{const y=top+i*step+4,label=key.replace(' unspecified',' (general)');const bar=svgNode('rect',{x:left,y,width:value/max*width,height:Math.min(20,step-7),rx:2,fill:key==='cybersecurity'?'#b33942':'#21649a'});bar.append(svgNode('title',{},`${key}: ${value} projects`));interactiveBar(bar,'hazard',key,key+': '+value+' projects');svg.append(svgNode('text',{x:left-10,y:y+14,'text-anchor':'end'},label),bar,svgNode('text',{x:left+value/max*width+7,y:y+14,class:'chart-value'},value));});
+  }
+  host.append(svg);
+ }
+}
+function render(){
+ const selected=awards.filter(a=>(!$('state').value||a.state===$('state').value)&&(!$('hazard').value||a.hazards.includes($('hazard').value))).sort((a,b)=>b.amount_usd-a.amount_usd||a.recipient.localeCompare(b.recipient));
+ charts(selected);
+ const total=selected.reduce((s,a)=>s+a.amount_usd,0),max=selected.length?selected[0].amount_usd:0,nstates=new Set(selected.map(a=>a.state)).size;
+ $('total').textContent=dollars.format(total);$('count').textContent=selected.length;$('states').textContent=`Across ${nstates} ${nstates===1?'state':'states'}`;$('average').textContent=selected.length?dollars.format(total/selected.length):'—';$('largest').textContent=selected.length?dollars.format(max):'—';
+ $('status').textContent=`Showing ${selected.length} of ${awards.length} projects${$('state').value||$('hazard').value?' · Filters active':''} · Data loaded ${loadedAt}`;
+ $('bars').replaceChildren();$('rows').replaceChildren();$('empty').hidden=selected.length>0;
+ for(const a of selected){
+  const row=el('div',undefined,'bar-row'),label=el('div',a.recipient,'bar-label');label.append(el('small',`${a.city}, ${a.state}`));const track=el('div',undefined,'track'),fill=el('div',undefined,'fill');fill.style.width=`${max?a.amount_usd/max*100:0}%`;track.append(fill);track.setAttribute('aria-hidden','true');row.append(label,track,el('div',dollars.format(a.amount_usd),'amount'));$('bars').append(row);
+  const tr=el('tr'),hazards=el('td');for(const hazard of a.hazards)hazards.append(el('span',hazard,'chip'));tr.append(el('td',a.recipient),el('td',`${a.city}, ${a.state}`),el('td',dollars.format(a.amount_usd),'amount'),hazards,el('td',a.purpose));$('rows').append(tr);
+ }
+ if(!selected.length)$('bars').append(el('p','No projects match the current selection.','empty'));
+}
+async function load(){
+ $('reload').disabled=true;$('error').hidden=true;$('status').textContent='Loading dataset…';
+ try{
+  const response=await fetch('./awards.json',{cache:'no-store'});if(!response.ok)throw new Error(`Dataset request failed (${response.status}).`);
+  const data=await response.json();validate(data);awards=data.awards;loadedAt=new Date().toLocaleTimeString();
+  options('state',[...new Set(awards.map(a=>a.state))].sort(),'All states');options('hazard',[...new Set(awards.flatMap(a=>a.hazards))].sort(),'All hazards');
+  $('published').textContent=data.metadata.published_date?` · Published ${data.metadata.published_date}`:'';
+  $('content').hidden=false;render();
+ }catch(error){$('content').hidden=true;$('status').textContent='Data unavailable';$('error').textContent=`Unable to load awards.json. ${error.message} ${location.protocol==='file:'?'Open this dashboard through a local web server, rather than double-clicking the HTML file.':'Check that awards.json is in the same folder and contains valid data, then select Reload data.'}`;$('error').hidden=false;}
+ finally{$('reload').disabled=false;}
+}
+$('state').addEventListener('change',render);$('hazard').addEventListener('change',render);$('reset').addEventListener('click',()=>{$('state').value='';$('hazard').value='';render();});$('reload').addEventListener('click',load);load();
+</script>
+</body>
+</html>
